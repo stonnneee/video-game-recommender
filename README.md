@@ -29,6 +29,18 @@ curl -X POST https://gamematch-api-127112588159.us-central1.run.app/recommend \
   -d '{"play_vibe":"Story-Driven","platform":"PC","play_style":"Solo","session_length":"Medium session","top_n":5}'
 ```
 
+## How to Use the App
+
+1. Open the deployed Shiny app: https://gamematch-shiny-127112588159.us-central1.run.app
+2. Select your preferences:
+   - **Play vibe:** What mood are you in? (Chill, Competitive, Story-Driven, Puzzle, Creative)
+   - **Platform:** Where do you want to play? (PC, PlayStation, Xbox, Nintendo Switch)
+   - **Play style:** Solo or Multiplayer/Co-op?
+   - **Session length:** How much time do you have? (Short, Medium, Long)
+   - **Recommendations:** How many games do you want to see? (3-10)
+3. Click "Find games"
+4. View the recommendations with match scores, titles, ratings, and images
+
 ## Data Collection
 
 I collected around 500 games from the RAWG API. The data includes game ID, name, release date, rating, metacritic score, playtime, genres, tags, platforms, stores, and cover images. See `src/collect_data.py` for the collection script and `data/raw/rawg_games_raw.csv` for the raw data.
@@ -96,26 +108,8 @@ flowchart TD
     F --> I[Google Cloud Run: Flask API Service]
     G --> J[Google Cloud Run: Shiny App Service]
 
-    I -->|Public API URL| K[Professor and Classmates]
-    J -->|Public App URL| K[Professor and Classmates]
-```
-
-## Deployment Infrastructure
-
-Both the API and the app are deployed on Google Cloud Run.
-
-| Component | Deployment |
-|---|---|
-| Flask API | Google Cloud Run |
-| Shiny App | Google Cloud Run |
-| Containerization | Docker |
-| API image build | Google Cloud Build |
-| Shiny image build | Google Cloud Build |
-
-The Flask API and Shiny app are deployed separately. The Shiny app connects to the API through the environment variable:
-
-```text
-GAMEMATCH_API_URL
+    I -->|Public API URL| K[Users]
+    J -->|Public App URL| K[Users]
 ```
 
 ## Local Setup
@@ -143,6 +137,16 @@ GAMEMATCH_API_URL=http://127.0.0.1:8000 shiny run --reload --port 8001 app/app.p
 ```
 
 Then visit `http://127.0.0.1:8001` in your browser.
+
+## Testing
+
+Run the recommender tests:
+
+```bash
+python3 -m pytest tests/
+```
+
+This runs unit tests for the recommendation model to ensure it returns valid recommendations and that scores are reasonable.
 
 ## Docker
 
