@@ -92,7 +92,7 @@ See `src/evaluate_model.py` for evaluation, which checks that recommendations ma
 The diagram below shows the full system architecture and data flow.
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[RAWG API] -->|HTTP requests through collect_data.py| B[Raw Game Data CSV]
     B --> C[Data Cleaning and Preprocessing]
     C --> D[Feature-Engineered Dataset games_features.csv]
