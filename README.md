@@ -163,7 +163,7 @@ docker run -p 8081:8080 -e GAMEMATCH_API_URL=http://host.docker.internal:8080 ga
 ## Project Structure
 
 ```text
-.
+video-game-recommender
 ├── api/
 │   └── app.py
 ├── app/
