@@ -176,8 +176,6 @@ docker run -p 8081:8080 -e GAMEMATCH_API_URL=http://host.docker.internal:8080 ga
 │       └── games_features.csv
 ├── notebooks/
 │   └── eda.ipynb
-├── reports/
-│   └── evaluation_results.csv
 ├── src/
 │   ├── collect_data.py
 │   ├── preprocess.py
