@@ -1,0 +1,14 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-f",
+        "Dockerfile.shiny",
+        "-t",
+        "us-central1-docker.pkg.dev/video-game-recommender-cs/gamematch-repo/gamematch-shiny:latest",
+        "."
+      ]
+
+images:
+  - "us-central1-docker.pkg.dev/video-game-recommender-cs/gamematch-repo/gamematch-shiny:latest"
