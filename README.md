@@ -72,7 +72,7 @@ The scoring weights are:
 - Play style: 20%
 - Session length: 15%
 - RAWG rating: 15%
-- Confidence in ratings: 5%
+- Confidence in ratings (rating counts): 5%
 
 Platform acts as a hard filter—only games on your selected platform are recommended, but platform doesn't contribute to the match score.
 
